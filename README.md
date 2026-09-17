@@ -16,12 +16,17 @@ To write a program to find the solution of a matrix using Gaussian Elimination.
 
 ## Program:
 ```
-
+/*
+Program to find the solution of a matrix using Gaussian Elimination.
+Developed by: Nather Nabeel S A C
+Register Number: 212224100040
+*/
+```
+```
 import os
 os.environ["OPENBLAS_NUM_THREADS"]="1"
 import numpy as np
 import sys
-
 n=int(input())
 a=np.zeros((n,n+1))
 x=np.zeros(n)
@@ -30,24 +35,27 @@ for i in range(n):
         a[i][j]=float(input())
 for i in range(n):
     if a[i][i]==0.0:
-        sys.exit('Divide by Zero detected!')
+        sys.exit('Divide by zero detected!')
     for j in range(i+1,n):
         ratio=a[j][i]/a[i][i]
+        
         for k in range(n+1):
-            a[j][k]=a[j][k]-ratio * a[i][k]
+            a[j][k]=a[j][k]-ratio*a[i][k]
+
 x[n-1]=a[n-1][n]/a[n-1][n-1]
+
 for i in range(n-2,-1,-1):
     x[i]=a[i][n]
     for j in range(i+1,n):
         x[i]=x[i]-a[i][j]*x[j]
     x[i]=x[i]/a[i][i]
 for i in range(n):
-    print('X%d = %0.2f' %(i,x[i]), end=' ')
-*/
+    print('X%d = %0.2f'%(i,x[i]),end=' ')
 ```
 
 ## Output:
-<img width="1230" height="534" alt="image" src="https://github.com/user-attachments/assets/c532db16-68d3-447a-8d19-a9fdba08c7df" />
+
+<img width="1258" height="942" alt="image" src="https://github.com/user-attachments/assets/ee31e828-d5f2-4fee-bcde-991a8465bd1c" />
 
 
 
